@@ -1860,6 +1860,31 @@ body {
     max-height: 30vh;
   }
 
+/* BLOOM — AJUSTE DE IMAGEN EN MÓVILES */
+@media (max-width: 600px) {
+  .branding-section .bloom-editorial-scene {
+    overflow: hidden;
+  }
+
+  .branding-section .bloom-editorial {
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 7%;
+    box-sizing: border-box;
+  }
+
+  .branding-section .bloom-ad-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 48vh;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+}
+
   .bloom-tagline {
     font-size: 12px;
     line-height: 1.6;
@@ -1927,7 +1952,6 @@ body {
     transition: none;
   }
 
-  .bloom-logo {
     animation: none;
   }
 }
