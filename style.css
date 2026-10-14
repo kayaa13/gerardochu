@@ -1,0 +1,3027 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap');
+
+/* =========================
+   RESET GENERAL
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #222;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #30251f;
+  color: white;
+}
+
+.background-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    transparent 35%,
+    rgba(0, 0, 0, 0.18)
+  );
+  pointer-events: none;
+}
+
+/* =========================
+   HEADER Y MENÚ
+========================= */
+
+.header {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 28px 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.navigation a {
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 400;
+  white-space: nowrap;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  transition: opacity 0.25s;
+}
+
+
+
+.navigation > a::after,
+.navigation > .dropdown::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 13px;
+  color: white;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.navigation > a:last-child::after {
+  content: none;
+}
+
+
+.navigation a:hover {
+  opacity: 0.65;
+}
+
+
+.navigation > a::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 13px;
+  opacity: 0.7;
+}
+
+.navigation > a:last-child::after {
+  content: none;
+}
+
+
+/* SUBMENÚ */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 150px;
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+  transition: 0.25s;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* BOTÓN DEL MENÚ MÓVIL */
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  margin: 6px;
+  background: white;
+}
+
+/* =========================
+   TEXTOS DE LA HOME
+========================= */
+
+.hero {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-caption,
+.scroll-indicator {
+  position: absolute;
+  bottom: 35px;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+.hero-caption {
+  left: 3%;
+}
+
+.scroll-indicator {
+  right: 3%;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+/* =========================
+   QUIÉN SOY
+========================= */
+
+.about {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 35px 4%;
+  background: #222;
+  color: white;
+}
+
+.statement {
+  width: 100%;
+  max-width: 1400px;
+  text-align: center;
+  font-size: clamp(18px, 3.2vw, 44px);
+  font-weight: 300;
+  line-height: 1.28;
+  letter-spacing: -0.035em;
+}
+
+.statement-line {
+  margin: 0;
+}
+
+.from-left,
+.from-right,
+.glitch {
+  display: inline-block;
+  position: relative;
+}
+
+/* PALABRAS DESTACADAS */
+
+.glitch {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+/* ESTADO INICIAL DE LAS ANIMACIONES */
+
+.from-left,
+.from-right,
+.glitch {
+  opacity: 0;
+}
+
+.from-left {
+  transform: translateX(-70px);
+}
+
+.from-right {
+  transform: translateX(70px);
+}
+
+/* ACTIVACIÓN AL ENTRAR EN LA SECCIÓN */
+
+.about.is-visible .from-left {
+  animation: enter-left 0.8s ease forwards;
+}
+
+.about.is-visible .from-right {
+  animation: enter-right 0.8s ease forwards;
+}
+
+.about.is-visible .glitch {
+  animation: reveal-glitch 0.7s steps(1, end) forwards;
+  animation-delay: 0.35s;
+}
+
+/* RETRASOS DE CADA LÍNEA */
+
+.about.is-visible .statement-line:nth-child(1) .from-left {
+  animation-delay: 0.1s;
+}
+
+.about.is-visible .statement-line:nth-child(1) .glitch {
+  animation-delay: 0.35s;
+}
+
+.about.is-visible .statement-line:nth-child(1) .from-right {
+  animation-delay: 0.5s;
+}
+
+.about.is-visible .statement-line:nth-child(2) .from-left {
+  animation-delay: 0.25s;
+}
+
+.about.is-visible .statement-line:nth-child(2) .glitch {
+  animation-delay: 0.55s;
+}
+
+.about.is-visible .statement-line:nth-child(2) .from-right {
+  animation-delay: 0.7s;
+}
+
+.about.is-visible .statement-line:nth-child(3) .from-left {
+  animation-delay: 0.4s;
+}
+
+.about.is-visible .statement-line:nth-child(3) .glitch {
+  animation-delay: 0.75s;
+}
+
+/* ENTRADAS LATERALES */
+
+@keyframes enter-left {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes enter-right {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* EFECTO GLITCH */
+
+@keyframes reveal-glitch {
+  0% {
+    opacity: 0;
+    text-shadow: 4px 0 #ff3158, -4px 0 #00eaff;
+    transform: translateX(-3px);
+  }
+
+  20% {
+    opacity: 1;
+    text-shadow: -4px 0 #ff3158, 4px 0 #00eaff;
+    transform: translateX(3px);
+  }
+
+  40% {
+    opacity: 1;
+    text-shadow: 3px 0 #00eaff, -3px 0 #ff3158;
+    transform: translateX(-2px);
+  }
+
+  60% {
+    opacity: 1;
+    text-shadow: -2px 0 #00eaff, 2px 0 #ff3158;
+    transform: translateX(1px);
+  }
+
+  100% {
+    opacity: 1;
+    text-shadow: none;
+    transform: translateX(0);
+  }
+}
+
+/* =========================
+   SECCIONES PROVISIONALES
+========================= */
+
+.placeholder {
+  min-height: 100vh;
+  padding: 70px 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  background: #f1eee7;
+  color: #222;
+}
+
+.placeholder p {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.placeholder h2 {
+  font-size: clamp(32px, 6vw, 75px);
+  font-weight: 400;
+}
+
+/* =========================
+   QUIÉN SOY: TEXTO Y CONTADORES
+========================= */
+
+.about-stats {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 55px 6.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #222;
+  color: #bbea13;
+}
+
+.stats-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.stats-description {
+  max-width: 1200px;
+  margin: 0 auto 35px;
+  font-size: clamp(18.4px, 2.3vw, 25.3px);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  color: #d0d0d0;
+}
+
+.stats-description p {
+  margin-bottom: 2px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: clamp(42px, 5vw, 58px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  margin-top: 5px;
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 300;
+  line-height: 1.4;
+  color: #d0d0d0;
+}
+
+/* =========================
+   PROYECTO MERCEDES AMG
+========================= */
+
+.mercedes-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #222;
+}
+
+/* VIDEO A PANTALLA COMPLETA */
+
+.mercedes-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.mercedes-section.video-visible .mercedes-video {
+  opacity: 1;
+}
+
+/* PANTALLA INTRODUCTORIA */
+
+.mercedes-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 5%;
+  background: #222;
+  color: #fff;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.mercedes-description {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  font-size: clamp(21px, 2.6vw, 28.6px);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+/* LÍNEAS DEL TEXTO */
+
+.mercedes-line {
+  display: block;
+  opacity: 0;
+}
+
+/* ANIMACIÓN GLITCH AL ACTIVARSE */
+
+.mercedes-section.is-active .mercedes-line {
+  animation: mercedes-glitch 0.7s steps(1, end) forwards;
+}
+
+.mercedes-section.is-active .mercedes-line:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.mercedes-section.is-active .mercedes-line:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.mercedes-section.is-active .mercedes-line:nth-child(3) {
+  animation-delay: 1.3s;
+}
+
+/* GLITCH DEL TEXTO MERCEDES */
+
+@keyframes mercedes-glitch {
+  0% {
+    opacity: 0;
+    text-shadow: 4px 0 #ff3158, -4px 0 #00eaff;
+    transform: translateX(-3px);
+  }
+
+  20% {
+    opacity: 1;
+    text-shadow: -4px 0 #ff3158, 4px 0 #00eaff;
+    transform: translateX(3px);
+  }
+
+  40% {
+    opacity: 1;
+    text-shadow: 3px 0 #00eaff, -3px 0 #ff3158;
+    transform: translateX(-2px);
+  }
+
+  60% {
+    opacity: 1;
+    text-shadow: -2px 0 #00eaff, 2px 0 #ff3158;
+    transform: translateX(1px);
+  }
+
+  100% {
+    opacity: 1;
+    text-shadow: none;
+    transform: translateX(0);
+  }
+}
+
+/* TRANSICIÓN DEL TEXTO AL VIDEO */
+
+.mercedes-section.video-visible .mercedes-intro {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================
+   RESPONSIVE: TABLETS Y MÓVILES
+========================= */
+
+@media (max-width: 900px) {
+  .header {
+    padding: 22px 5%;
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 7;
+    display: block;
+  }
+
+  .navigation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(320px, 85vw);
+    height: 100vh;
+    height: 100svh;
+    padding: 90px 30px 30px;
+    background: rgba(25, 25, 25, 0.98);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s, visibility 0.3s;
+  }
+
+  .navigation.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .navigation a {
+    font-size: 11px;
+  }
+
+  .navigation > a::after {
+    display: none;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    display: none;
+    padding: 15px 0 0 12px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .dropdown.open .dropdown-menu {
+    display: flex;
+  }
+
+  .statement {
+    font-size: clamp(19px, 5vw, 34px);
+    line-height: 1.45;
+  }
+
+  .hero-caption {
+    max-width: 65%;
+    font-size: 8px;
+  }
+}
+
+/* =========================
+   CONTADORES EN MÓVILES
+========================= */
+
+@media (max-width: 600px) {
+  .about-stats {
+    min-height: 100svh;
+    padding: 45px 7%;
+  }
+
+  .stats-description {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 35px;
+  }
+
+  .stats-grid {
+    gap: 8px;
+  }
+
+  .stat-number {
+    font-size: clamp(32px, 10vw, 44px);
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  /* INTRO MERCEDES EN MÓVILES */
+
+  .mercedes-intro {
+    padding: 25px 7%;
+  }
+
+  .mercedes-description {
+    font-size: clamp(18px, 4.5vw, 23px);
+    line-height: 1.45;
+  }
+}
+
+/* =========================
+   ACCESIBILIDAD
+   RESPETAR MOVIMIENTO REDUCIDO
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .about.is-visible .from-left,
+  .about.is-visible .from-right,
+  .about.is-visible .glitch {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    text-shadow: none;
+  }
+
+  .mercedes-section.is-active .mercedes-line {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    text-shadow: none;
+  }
+
+  .mercedes-video,
+  .mercedes-intro {
+    transition: none;
+  }
+}
+
+
+.about-list {
+  list-style: disc;
+  padding-left: 24px;
+  margin: 0;
+}
+
+.about-list li {
+  padding-left: 4px;
+  margin-bottom: 4px;
+}
+
+.about-list li::marker {
+  color: #d0d0d0;
+}
+
+
+/* =========================
+   DISEÑO DE JOYERÍA
+   ESCENAS CONTROLADAS POR SCROLL
+========================= */
+
+.jewelry-section {
+  position: relative;
+  width: 100%;
+  height: 500vh;
+  background: #222;
+  color: #fff;
+}
+
+.jewelry-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #222;
+}
+
+.jewelry-scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.jewelry-scene.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* TÍTULO Y SUBTÍTULO */
+
+.jewelry-intro .jewelry-heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.jewelry-title {
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.jewelry-subtitle {
+  font-size: clamp(11px, 1.2vw, 15px);
+  font-weight: 300;
+}
+
+/* DESCRIPCIÓN INFERIOR */
+
+.jewelry-description {
+  position: absolute;
+  left: 7.5%;
+  bottom: 9%;
+  width: 85%;
+  max-width: 850px;
+  color: #aaa;
+  font-size: clamp(13px, 1.5vw, 18px);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+/* IMÁGENES */
+
+.jewelry-image-scene img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(78%, 1100px);
+  height: 72%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+/* ENCABEZADOS DE ESCENAS 2, 3 Y 4 */
+
+.jewelry-section .jewelry-image-scene .jewelry-heading {
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  right: auto;
+  width: 90%;
+  transform: none;
+  text-align: left;
+}
+
+/* VIDEO */
+
+.jewelry-video-scene video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(78%, 1100px);
+  height: 72%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+/* MÓVILES */
+
+@media (max-width: 600px) {
+  .jewelry-intro .jewelry-heading {
+    top: 50%;
+    left: 50%;
+  }
+
+  .jewelry-image-scene img {
+    width: 90%;
+    height: 65%;
+  }
+
+  .jewelry-section .jewelry-image-scene .jewelry-heading {
+    top: 5%;
+    left: 5%;
+    width: 90%;
+  }
+
+  .jewelry-video-scene video {
+    width: 90%;
+    height: 65%;
+  }
+
+  .jewelry-description {
+    left: 5%;
+    bottom: 7%;
+    width: 90%;
+    font-size: 11px;
+  }
+}
+
+/* NAVEGACIÓN DE JOYERÍA */
+
+.jewelry-navigation {
+  position: absolute;
+  z-index: 10;
+  left: 5%;
+  right: 5%;
+  bottom: 4%;
+  display: grid;
+  grid-template-columns: 1fr minmax(80px, 30%) auto;
+  align-items: center;
+  gap: 20px;
+  color: #fff;
+  pointer-events: none;
+}
+
+.jewelry-scroll-hint {
+  margin: 0;
+  color: #aaa;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.jewelry-progress-track {
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.jewelry-progress-fill {
+  width: 20%;
+  height: 100%;
+  background: #fff;
+}
+
+.jewelry-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin: 0;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.jewelry-current {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.jewelry-counter-divider,
+.jewelry-total {
+  color: #999;
+}
+
+@media (max-width: 600px) {
+  .jewelry-navigation {
+    left: 5%;
+    right: 5%;
+    bottom: 3%;
+    grid-template-columns: 1fr 25% auto;
+    gap: 12px;
+  }
+
+  .jewelry-scroll-hint {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+}
+
+
+
+/* =========================
+   TRAYECTORIA CINEMATOGRÁFICA
+========================= */
+
+.experience-section {
+  position: relative;
+  height: 700vh;
+  background: #090909;
+  color: #f4f4f0;
+}
+
+.experience-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 540px;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7vh 8%;
+}
+
+.experience-sticky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 78% 48%,
+      rgba(231, 255, 86, 0.065), transparent 43%),
+    linear-gradient(120deg, #090909 35%, #111 100%);
+}
+
+.experience-header {
+  position: absolute;
+  top: 7%;
+  left: 8%;
+  z-index: 3;
+}
+
+.experience-kicker,
+.experience-hint,
+.experience-bottom,
+.experience-type {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+}
+
+.experience-kicker {
+  color: #a5a5a0;
+  margin-bottom: 18px;
+}
+
+.experience-header h2 {
+  font-size: clamp(27px, 4.3vw, 58px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+.experience-header h2 span {
+  color: #e7ff56;
+}
+
+.experience-hint {
+  margin-top: 20px;
+  color: #92928d;
+}
+
+.experience-hint span {
+  color: #e7ff56;
+  margin-left: 8px;
+}
+
+.experience-progress {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 12%;
+  height: 1px;
+  background: #333;
+}
+
+.experience-progress-fill {
+  width: 0;
+  height: 100%;
+  background: #e7ff56;
+  transform-origin: left;
+  box-shadow: 0 0 12px rgba(231, 255, 86, 0.6);
+}
+
+.experience-counter {
+  position: absolute;
+  right: 8%;
+  top: 8%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #888;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.experience-current {
+  color: #e7ff56;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.experience-counter-line {
+  width: 28px;
+  height: 1px;
+  background: #555;
+}
+
+.experience-timeline {
+  position: relative;
+  width: 100%;
+  height: 45%;
+  margin-top: 8vh;
+}
+
+.experience-item {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+  align-items: center;
+  gap: 5%;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    visibility 0.65s;
+}
+
+.experience-item.is-current {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-year {
+  color: #f4f4f0;
+  font-size: clamp(58px, 11vw, 160px);
+  line-height: 0.85;
+  letter-spacing: -0.09em;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.experience-year span {
+  color: #e7ff56;
+}
+
+.experience-card {
+  max-width: 470px;
+  padding-left: 22px;
+  border-left: 1px solid #41413a;
+}
+
+.experience-type {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #e7ff56;
+  margin-bottom: 22px;
+  font-size: 9px;
+}
+
+.experience-type span {
+  color: #777;
+  white-space: nowrap;
+}
+
+.experience-card h3 {
+  font-size: clamp(26px, 3.3vw, 46px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+  margin-bottom: 22px;
+}
+
+.experience-role {
+  font-size: clamp(13px, 1.2vw, 16px);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.experience-place {
+  margin-top: 7px;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.experience-detail {
+  margin-top: 18px;
+  color: #888;
+  font-size: 12px;
+  line-height: 1.7;
+  max-width: 390px;
+}
+
+.experience-bottom {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #777;
+  font-size: 9px;
+}
+
+/* Movimiento reducido: mantener la lectura accesible */
+@media (prefers-reduced-motion: reduce) {
+  .experience-item {
+    transition: none;
+  }
+}
+
+/* Tablets y móviles */
+@media (max-width: 700px) {
+  .experience-section {
+    height: auto;
+  }
+
+  .experience-sticky {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    padding: 75px 7% 35px;
+    overflow: visible;
+  }
+
+  .experience-sticky::before {
+    position: fixed;
+  }
+
+  .experience-header,
+  .experience-counter,
+  .experience-progress,
+  .experience-bottom {
+    position: static;
+  }
+
+  .experience-header {
+    margin-bottom: 55px;
+  }
+
+  .experience-header h2 {
+    font-size: clamp(34px, 10vw, 52px);
+  }
+
+  .experience-counter {
+    align-self: flex-end;
+    margin-bottom: 20px;
+  }
+
+  .experience-timeline {
+    height: auto;
+    margin-top: 0;
+  }
+
+  .experience-item,
+  .experience-item.is-current {
+    position: relative;
+    inset: auto;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    padding: 30px 0 40px;
+    border-top: 1px solid #333;
+  }
+
+  .experience-year {
+    font-size: clamp(54px, 15vw, 88px);
+    margin-bottom: 28px;
+    white-space: normal;
+  }
+
+  .experience-card {
+    margin-left: 4px;
+    padding-left: 18px;
+  }
+
+  .experience-card h3 {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .experience-progress {
+    margin: 20px 0 35px;
+  }
+
+  .experience-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.8;
+  }
+}
+/* ENCABEZADO QUIÉN SOY — ESTILO TRAYECTORIA */
+.about-stats-header {
+  position: static;
+  width: 100%;
+  margin: 0 auto 28px;
+}
+
+.about-stats-kicker {
+  color: #e7ff56;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   E-LEARNING · STA
+   SCROLL CINEMATOGRÁFICO
+========================= */
+
+.sta-section {
+  position: relative;
+  height: 500vh;
+  background: #090909;
+  color: #f4f4f0;
+}
+
+.sta-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 550px;
+  overflow: hidden;
+  padding: 6vh 6%;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sta-sticky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 70% 55%,
+      rgba(80, 130, 70, 0.09), transparent 55%),
+    #090909;
+}
+
+.sta-header {
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  z-index: 3;
+}
+
+.sta-kicker {
+  color: #aaa;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  margin-bottom: 12px;
+}
+
+.sta-header h2 {
+  color: #f4f4f0;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.sta-header h2 span {
+  color: #e7ff56;
+}
+
+.sta-description {
+  margin-top: 12px;
+  color: #aaa;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.sta-counter {
+  position: absolute;
+  top: 8%;
+  right: 6%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #777;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sta-current {
+  color: #e7ff56;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.sta-counter-line {
+  width: 28px;
+  height: 1px;
+  background: #555;
+}
+
+.sta-scenes {
+  position: relative;
+  width: 100%;
+  height: 65%;
+  margin-top: 8vh;
+}
+
+.sta-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  transition:
+    opacity 0.6s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    visibility 0.6s;
+}
+
+.sta-scene.is-current {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.sta-scene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sta-scene-label {
+  position: absolute;
+  left: 0;
+  bottom: -18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: #999;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+.sta-scene-label span:first-child {
+  color: #e7ff56;
+  font-weight: 800;
+}
+
+.sta-progress {
+  position: absolute;
+  bottom: 12%;
+  left: 6%;
+  right: 6%;
+  height: 1px;
+  background: #333;
+}
+
+.sta-progress-fill {
+  width: 0;
+  height: 100%;
+  background: #e7ff56;
+  box-shadow: 0 0 10px rgba(231, 255, 86, 0.45);
+}
+
+.sta-footer {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #777;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 700px) {
+  .sta-section {
+    height: 300vh;
+  }
+
+  .sta-sticky {
+    min-height: 500px;
+    padding: 5vh 5%;
+  }
+
+  .sta-header {
+    top: 5%;
+    left: 5%;
+    right: 20%;
+  }
+
+  .sta-header h2 {
+    font-size: clamp(27px, 7vw, 38px);
+  }
+
+  .sta-description {
+    max-width: 290px;
+    font-size: 10px;
+  }
+
+  .sta-counter {
+    top: 6%;
+    right: 5%;
+    gap: 6px;
+  }
+
+  .sta-scenes {
+    height: 48%;
+    margin-top: 12vh;
+  }
+
+  .sta-scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .sta-scene-label {
+    bottom: -25px;
+    font-size: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  .sta-progress {
+    left: 5%;
+    right: 5%;
+    bottom: 12%;
+  }
+
+  .sta-footer {
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    font-size: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sta-scene {
+    transition: none;
+  }
+}
+.navigation {
+  align-items: center;
+}
+
+.navigation > a,
+.navigation .dropdown {
+  align-self: center;
+}
+
+/* Corrección vertical específica de CONTACTO */
+.header .navigation > a[href="#contact"] {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  line-height: normal;
+}
+
+
+/* =================================
+   BRANDING — BLOOM · SCROLL EDITORIAL
+================================= */
+
+.branding-section {
+  position: relative;
+  width: 100%;
+  height: 400vh;
+  background: #171715;
+  color: #f7f5ee;
+}
+
+.branding-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #171715;
+}
+
+.branding-scene {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+
+.branding-scene.is-active {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+
+.bloom-scene {
+  background: #171715;
+}
+
+.bloom-kicker {
+  margin: 0 0 24px;
+  color: #e9d900;
+  font-size: clamp(10px, 0.9vw, 13px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.branding-index {
+  position: absolute;
+  top: 4%;
+  right: 5%;
+  z-index: 3;
+  color: #e9d900;
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 800;
+}
+
+.branding-scroll-hint {
+  position: absolute;
+  right: 5%;
+  bottom: 4%;
+  z-index: 3;
+  color: #aaa9a2;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+
+/* ESCENA 1 — BLOOM: TEXTO A LA IZQUIERDA, LOGO A LA DERECHA */
+
+.bloom-intro-content {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  transform: none;
+}
+
+/* Etiqueta superior izquierda */
+.bloom-intro-content .bloom-kicker {
+  position: absolute;
+  top: 12%;
+  left: 7%;
+  width: 35%;
+  margin: 0;
+}
+
+/* Logo grande a la derecha */
+
+.bloom-intro-content .bloom-logo {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  display: block;
+  width: 58%;
+  max-width: none;
+  height: auto;
+  max-height: 75vh;
+  object-fit: contain;
+  object-position: center;
+  transform: translateY(-50%);
+  animation: none;
+}
+
+
+/* Eslogan a la izquierda */
+.bloom-intro-content .bloom-tagline {
+  position: absolute;
+  top: 40%;
+  left: 7%;
+  width: 28%;
+  margin: 0;
+  color: #e9d900;
+  font-size: clamp(17px, 2vw, 29px);
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+}
+
+/* Descripción a la izquierda */
+.bloom-intro-content .bloom-description {
+  position: absolute;
+  top: 57%;
+  left: 7%;
+  width: 27%;
+  max-width: 400px;
+  margin: 0;
+  color: #aaa9a2;
+  font-size: clamp(13px, 1.15vw, 17px);
+  line-height: 1.7;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 700px) {
+  .bloom-intro-content .bloom-kicker {
+    top: 12%;
+    left: 7%;
+    width: 86%;
+  }
+
+  .bloom-intro-content .bloom-logo {
+    top: 37%;
+    right: 3%;
+    width: 94%;
+    max-height: 35vh;
+    transform: translateY(-50%);
+  }
+
+  .bloom-intro-content .bloom-tagline {
+    top: 62%;
+    left: 7%;
+    width: 86%;
+    font-size: 16px;
+  }
+
+  .bloom-intro-content .bloom-description {
+    top: 74%;
+    left: 7%;
+    width: 82%;
+    font-size: 13px;
+  }
+}
+
+
+
+@keyframes bloom-logo-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ESCENA 2 — DIRECCIÓN DE ARTE A PANTALLA COMPLETA */
+
+.bloom-editorial {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Imagen a pantalla completa */
+
+.bloom-ad-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bloom-editorial-scene.is-active .bloom-ad-image {
+  transform: scale(1);
+}
+/* Texto superpuesto */
+.bloom-editorial-copy {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  z-index: 2;
+  width: 38%;
+  transform: translateY(-50%);
+}
+.bloom-editorial-copy h2,
+.bloom-video-copy h2 {
+  margin: 0 0 24px;
+  font-size: clamp(34px, 4.5vw, 68px);
+  line-height: 0.98;
+}
+.bloom-editorial-copy > p:last-child {
+  max-width: 360px;
+  color: #fff;
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height: 1.7;
+}
+/* Degradado para mejorar la lectura */
+
+.bloom-editorial-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.20) 0%,
+    rgba(0, 0, 0, 0.08) 35%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  .bloom-editorial-copy {
+    left: 7%;
+    width: 86%;
+  }
+}
+
+
+/* ESCENA 3 — VIDEO A PANTALLA COMPLETA */
+
+.bloom-video-scene {
+  padding: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.bloom-video-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.bloom-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 40%;
+  background: #000;
+}
+
+/* Texto superpuesto sobre el video */
+.bloom-video-copy {
+  position: absolute;
+  z-index: 2;
+  left: 8%;
+  bottom: 12%;
+  max-width: 460px;
+}
+
+/* Mantener los indicadores visibles */
+.bloom-video-scene .branding-index,
+.bloom-video-scene .branding-scroll-hint {
+  z-index: 3;
+}
+
+
+/* ESCENA 4 — CIERRE */
+
+.bloom-outro-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.72;
+}
+
+.bloom-outro-copy {
+  position: absolute;
+  left: 8%;
+  bottom: 12%;
+  width: min(430px, 65%);
+}
+
+.bloom-outro-copy img {
+  display: block;
+  width: 100%;
+  max-height: 130px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.bloom-outro-copy p {
+  margin-top: 20px;
+  color: #e9d900;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+/* MÓVIL */
+
+@media (max-width: 700px) {
+  .branding-section {
+    height: 400svh;
+  }
+
+  .bloom-intro-content {
+    left: 7%;
+    width: 86%;
+  }
+
+  .bloom-logo {
+    max-height: 30vh;
+  }
+
+  .bloom-tagline {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .bloom-description {
+    font-size: 13px;
+  }
+
+  .bloom-editorial {
+    inset: 12% 7% 9%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 12px;
+  }
+
+  .bloom-editorial-copy h2 {
+    font-size: clamp(30px, 8vw, 42px);
+  }
+
+  .bloom-editorial-copy > p:last-child {
+    font-size: 12px;
+  }
+
+  .bloom-ad-image {
+    height: 100%;
+    max-height: 48vh;
+  }
+
+  .bloom-video-scene {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 12px;
+    padding: 12% 7%;
+  }
+
+  .bloom-video-copy h2 {
+    font-size: 32px;
+  }
+
+  .bloom-video-description {
+    font-size: 12px;
+  }
+
+  .bloom-video-frame {
+    height: 100%;
+    max-height: 58vh;
+  }
+
+  .bloom-video {
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .bloom-outro-copy {
+    left: 7%;
+    bottom: 12%;
+    width: 82%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .branding-scene,
+  .bloom-ad-image {
+    transition: none;
+  }
+
+  .bloom-logo {
+    animation: none;
+  }
+}
+
+
+/* ==================================================
+   RITUAL RESERVE — COMPLETE BRAND EXPERIENCE
+   5 scenes / Espresso / Bronze / Cream
+================================================== */
+
+/* ---------- GLOBAL ---------- */
+
+.ritual-section {
+  position: relative;
+  height: 500vh;
+  overflow: clip;
+  isolation: isolate;
+  background: #20150f;
+  color: #f0e4d1;
+}
+
+.ritual-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #20150f;
+}
+
+.ritual-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.ritual-scene.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ritual-kicker {
+  margin: 0;
+  color: #d4b58a;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 1.8;
+}
+
+.ritual-scene img {
+  display: block;
+}
+
+/* ==================================================
+   SCENE 01 — THE ORIGIN
+   Full-screen coffee photography
+================================================== */
+
+.ritual-intro {
+  background: #25170f;
+}
+
+.ritual-origin-image,
+.ritual-origin-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ritual-origin-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.ritual-origin-shade {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(22, 13, 8, 0.55) 0%,
+      rgba(22, 13, 8, 0.05) 35%,
+      rgba(22, 13, 8, 0.25) 60%,
+      rgba(22, 13, 8, 0.88) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(22, 13, 8, 0.48),
+      transparent 85%
+    );
+}
+
+.ritual-origin-top {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 5%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #f0e4d1;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+}
+
+.ritual-origin-top span:first-child {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  letter-spacing: -0.04em;
+}
+
+.ritual-origin-heading {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  z-index: 2;
+  transform: translateY(-48%);
+}
+
+.ritual-origin-heading .ritual-kicker {
+  margin-bottom: 28px;
+}
+
+.ritual-origin-heading h2 {
+  margin: 0;
+  color: #f4e9d7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(76px, 12.5vw, 190px);
+  font-weight: 400;
+  letter-spacing: -0.095em;
+  line-height: 0.73;
+}
+
+.ritual-origin-heading h2 span {
+  color: #d4b58a;
+  font-size: 0.76em;
+  font-style: italic;
+  letter-spacing: -0.075em;
+}
+
+.ritual-origin-bottom {
+  position: absolute;
+  right: 5%;
+  bottom: 6%;
+  left: 5%;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: end;
+  gap: 30px;
+  border-top: 1px solid rgba(240, 228, 209, 0.35);
+  padding-top: 18px;
+}
+
+.ritual-origin-bottom img {
+  width: 100px;
+  max-height: 52px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.ritual-origin-bottom p {
+  margin: 0;
+  color: #f0e4d1;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.ritual-origin-bottom > span {
+  color: #d4b58a;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+/* ==================================================
+   SCENE 02 — CRAFTED WITH CARE
+   Full-screen photography + editorial typography
+================================================== */
+
+.ritual-art {
+  background: #21150f;
+  color: #f0e4d1;
+}
+
+.ritual-art .ritual-art-image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #21150f;
+}
+
+.ritual-art .ritual-bean-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ritual-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(24, 15, 10, 0.58) 0%,
+      rgba(24, 15, 10, 0.08) 35%,
+      rgba(24, 15, 10, 0.2) 60%,
+      rgba(24, 15, 10, 0.85) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(24, 15, 10, 0.36),
+      transparent 85%
+    );
+  pointer-events: none;
+}
+
+.ritual-art .ritual-art-index {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 5%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #f0e4d1;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+
+.ritual-art .ritual-art-index span:first-child {
+  color: #d4b58a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  letter-spacing: 0;
+}
+
+.ritual-art .ritual-art-heading {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  z-index: 2;
+  width: 75%;
+  transform: translateY(-50%);
+}
+
+.ritual-art .ritual-art-heading .ritual-kicker {
+  color: #e1c49c;
+}
+
+.ritual-art .ritual-art-heading h2 {
+  margin: 28px 0 0;
+  color: #f6ead8;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(72px, 11vw, 160px);
+  font-weight: 400;
+  letter-spacing: -0.08em;
+  line-height: 0.78;
+}
+
+.ritual-art .ritual-art-heading h2 em {
+  color: #d4b58a;
+  font-weight: 400;
+}
+
+.ritual-art .ritual-art-image-label {
+  position: absolute;
+  right: 5%;
+  bottom: 15%;
+  z-index: 2;
+  padding: 12px 15px;
+  background: rgba(32, 21, 15, 0.75);
+  color: #f0e4d1;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+.ritual-art .ritual-art-footer {
+  position: absolute;
+  right: 8%;
+  bottom: 6%;
+  left: 8%;
+  z-index: 2;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  border-top: 1px solid rgba(240, 228, 209, 0.4);
+  padding-top: 18px;
+}
+
+.ritual-art .ritual-art-footer p {
+  max-width: 300px;
+  margin: 0;
+  color: #f0e4d1;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ritual-art .ritual-art-footer span {
+  max-width: 170px;
+  color: #d4b58a;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-align: right;
+}
+
+/* ==================================================
+   SCENE 03 — THE RITUAL
+   Full-screen video with minimal overlays
+================================================== */
+
+.ritual-motion {
+  background: #17110d;
+}
+
+.ritual-motion .ritual-video-frame {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 104%;
+  max-height: none;
+  overflow: hidden;
+  border: 0;
+  background: #080605;
+}
+
+.ritual-motion .ritual-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+}
+
+.ritual-motion::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 10, 7, 0.58) 0%,
+    transparent 32%,
+    transparent 62%,
+    rgba(15, 10, 7, 0.7) 100%
+  );
+  pointer-events: none;
+}
+
+.ritual-motion .ritual-motion-top {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 5%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ritual-motion .ritual-motion-top img {
+  width: 105px;
+  max-height: 48px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.ritual-motion .ritual-motion-top span {
+  color: #f0e4d1;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+}
+
+.ritual-motion .ritual-motion-title {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  z-index: 2;
+  width: 50%;
+  transform: translateY(-50%);
+}
+
+.ritual-motion .ritual-motion-title h2 {
+  margin: 24px 0 0;
+  color: #f0e4d1;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(58px, 8vw, 116px);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+  text-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
+}
+
+.ritual-motion .ritual-motion-title h2 em {
+  color: #e1c49c;
+  font-weight: 400;
+}
+
+.ritual-motion .ritual-motion-side {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  z-index: 2;
+  color: #f0e4d1;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%);
+}
+
+.ritual-motion .ritual-motion-bottom {
+  position: absolute;
+  right: 8%;
+  bottom: 6%;
+  left: 8%;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(240, 228, 209, 0.4);
+  padding-top: 15px;
+  color: #f0e4d1;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+}
+
+/* ==================================================
+   SCENE 04 — TAKE YOUR TIME
+   Full-screen product photography
+================================================== */
+
+.ritual-outro {
+  display: block;
+  background: #21150f;
+  color: #f0e4d1;
+}
+
+.ritual-outro .ritual-outro-image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #21150f;
+}
+
+.ritual-outro .ritual-cup-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ritual-outro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(22, 13, 8, 0.55) 0%,
+    rgba(22, 13, 8, 0.05) 34%,
+    rgba(22, 13, 8, 0.12) 60%,
+    rgba(22, 13, 8, 0.78) 100%
+  );
+  pointer-events: none;
+}
+
+.ritual-outro .ritual-outro-top {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 5%;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  color: #f0e4d1;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+}
+
+
+.ritual-outro .ritual-outro-message {
+  position: absolute;
+  top: 16%;
+  left: 8%;
+  bottom: auto;
+  z-index: 2;
+  width: 55%;
+  margin: 0;
+}
+
+
+.ritual-outro .ritual-outro-number {
+  display: block;
+  margin-bottom: 24px;
+  color: #e1c49c;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+
+.ritual-outro .ritual-outro-message h2 {
+  margin: 0;
+  color: #f6ead8;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(54px, 6.5vw, 96px);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+}
+
+.ritual-outro .ritual-outro-message h2 em {
+  color: #e1c49c;
+  font-weight: 400;
+}
+
+.ritual-outro .ritual-outro-message p {
+  margin: 22px 0 0;
+  color: #f0e4d1;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.ritual-outro .ritual-outro-message > img {
+  width: 125px;
+  max-height: 65px;
+  margin-top: 25px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(240, 228, 209, 0.55);
+  object-fit: contain;
+  object-position: left center;
+}
+
+.ritual-outro .ritual-outro-signature {
+  position: absolute;
+  right: 5%;
+  bottom: 6%;
+  z-index: 2;
+  color: #f0e4d1;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+}
+
+/* ==================================================
+   SCENE 05 — BRAND SIGNATURE
+   Centered oversized logo
+================================================== */
+
+.ritual-signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(153, 107, 66, 0.19),
+      transparent 58%
+    ),
+    #20150f;
+}
+
+.ritual-signature::before {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border: 1px solid rgba(198, 164, 119, 0.32);
+  pointer-events: none;
+}
+
+.ritual-signature-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  text-align: center;
+}
+
+.ritual-signature-kicker {
+  margin: 0 0 38px;
+  color: #c6a477;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+}
+
+.ritual-signature-logo {
+  display: block;
+  width: min(65vw, 720px);
+  max-width: 90%;
+  max-height: 55vh;
+  object-fit: contain;
+  object-position: center;
+}
+
+.ritual-signature-caption {
+  margin: 38px 0 0;
+  color: #d6c2a7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 0.08em;
+}
+
+.ritual-signature-footer {
+  position: absolute;
+  right: 5%;
+  bottom: 6%;
+  left: 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(198, 164, 119, 0.35);
+  padding-top: 15px;
+  color: #c6a477;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+}
+
+/* ==================================================
+   RESPONSIVE — MOBILE
+================================================== */
+
+@media (max-width: 768px) {
+  /* Scene 01 */
+
+  .ritual-origin-top {
+    top: 4%;
+    left: 6%;
+    right: 6%;
+  }
+
+  .ritual-origin-top span:last-child {
+    font-size: 7px;
+    letter-spacing: 0.12em;
+  }
+
+  .ritual-origin-heading {
+    top: 43%;
+    left: 6%;
+    right: 4%;
+    transform: translateY(-30%);
+  }
+
+  .ritual-origin-heading h2 {
+    font-size: clamp(62px, 15vw, 112px);
+  }
+
+  .ritual-origin-heading .ritual-kicker {
+    margin-bottom: 24px;
+  }
+
+  .ritual-origin-bottom {
+    left: 6%;
+    right: 6%;
+    bottom: 5%;
+    grid-template-columns: 78px 1fr;
+    gap: 16px;
+  }
+
+  .ritual-origin-bottom img {
+    width: 72px;
+  }
+
+  .ritual-origin-bottom p {
+    font-size: 13px;
+  }
+
+  .ritual-origin-bottom > span {
+    display: none;
+  }
+
+  /* Scene 02 */
+
+  .ritual-art .ritual-art-index {
+    top: 4%;
+    left: 6%;
+    right: 6%;
+  }
+
+  .ritual-art .ritual-art-heading {
+    top: 48%;
+    left: 7%;
+    width: 90%;
+  }
+
+  .ritual-art .ritual-art-heading h2 {
+    margin-top: 20px;
+    font-size: clamp(58px, 14vw, 100px);
+  }
+
+  .ritual-art .ritual-art-footer {
+    right: 7%;
+    bottom: 5%;
+    left: 7%;
+  }
+
+  .ritual-art .ritual-art-footer p {
+    max-width: 270px;
+    font-size: 12px;
+  }
+
+  .ritual-art .ritual-art-footer span {
+    display: none;
+  }
+
+  .ritual-art .ritual-art-image-label {
+    right: 7%;
+    bottom: 17%;
+    font-size: 7px;
+  }
+
+  /* Scene 03 */
+
+  .ritual-motion .ritual-motion-top {
+    top: 4%;
+    left: 6%;
+    right: 6%;
+  }
+
+  .ritual-motion .ritual-motion-top img {
+    width: 80px;
+  }
+
+  .ritual-motion .ritual-motion-title {
+    top: 50%;
+    left: 7%;
+    width: 82%;
+  }
+
+  .ritual-motion .ritual-motion-title h2 {
+    font-size: clamp(48px, 11vw, 78px);
+  }
+
+  .ritual-motion .ritual-motion-side {
+    right: 4%;
+    font-size: 7px;
+  }
+
+  .ritual-motion .ritual-motion-bottom {
+    right: 7%;
+    bottom: 5%;
+    left: 7%;
+    font-size: 7px;
+  }
+
+  /* Scene 04 */
+
+  .ritual-outro .ritual-outro-top {
+    top: 4%;
+    left: 6%;
+    right: 6%;
+    font-size: 7px;
+  }
+
+  .ritual-outro .ritual-outro-message {
+  position: absolute;
+  top: 13%;
+  left: 7%;
+  bottom: auto;
+  width: 88%;
+  margin: 0;
+}
+
+  .ritual-outro .ritual-outro-message h2 {
+    font-size: clamp(48px, 11vw, 76px);
+  }
+
+  .ritual-outro .ritual-outro-message p {
+    font-size: 11px;
+  }
+
+  .ritual-outro .ritual-outro-message > img {
+    width: 100px;
+    margin-top: 18px;
+  }
+
+  .ritual-outro .ritual-outro-signature {
+    right: 6%;
+    bottom: 4%;
+    font-size: 7px;
+  }
+
+  /* Scene 05 */
+
+  .ritual-signature::before {
+    inset: 14px;
+  }
+
+  .ritual-signature-content {
+    width: 88%;
+  }
+
+  .ritual-signature-kicker {
+    margin-bottom: 28px;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+  }
+
+  .ritual-signature-logo {
+    width: 85%;
+    max-height: 38vh;
+  }
+
+  .ritual-signature-caption {
+    margin-top: 28px;
+    font-size: 12px;
+  }
+
+  .ritual-signature-footer {
+    right: 7%;
+    bottom: 5%;
+    left: 7%;
+    font-size: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ritual-scene {
+    transition: none;
+  }
+}
+
+/* =================================
+   CONTACTO
+================================= */
+
+.contact-section {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 45px 7% 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 55px;
+  background: #222;
+  color: #f1eee7;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.contact-top,
+.contact-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.contact-kicker,
+.contact-top > span,
+.contact-eyebrow,
+.contact-form label,
+.contact-form-note,
+.contact-footer {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+
+.contact-top > span {
+  color: #aaa9a2;
+  text-align: right;
+}
+
+.contact-main {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.8fr;
+  gap: clamp(50px, 10vw, 150px);
+  align-items: center;
+}
+
+.contact-eyebrow {
+  color: #aaa9a2;
+  margin-bottom: 25px;
+}
+
+.contact-intro h2 {
+  margin: 0;
+  font-size: clamp(38px, 5.5vw, 78px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.contact-intro h2 span {
+  color: #aaa9a2;
+}
+
+.contact-description {
+  max-width: 430px;
+  margin: 28px 0;
+  color: #b8b7b1;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #666;
+  color: #f1eee7;
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.contact-email:hover {
+  color: #d5c86b;
+  border-color: #d5c86b;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form label {
+  margin-top: 12px;
+  color: #b8b7b1;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid #555;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: #f1eee7;
+  font: inherit;
+  font-size: 12px;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-bottom-color: #d5c86b;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #777;
+}
+
+.contact-form select {
+  color: #aaa9a2;
+}
+
+.contact-form select option {
+  background: #222;
+  color: #f1eee7;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 75px;
+}
+
+.contact-submit {
+  margin-top: 22px;
+  padding: 17px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f1eee7;
+  background: transparent;
+  color: #f1eee7;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.contact-submit:hover {
+  background: #f1eee7;
+  color: #222;
+}
+
+.contact-form-note {
+  color: #777;
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+}
+
+.contact-footer {
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  color: #92918b;
+  font-size: 8px;
+}
+
+.contact-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-footer a:hover {
+  color: #f1eee7;
+}
+
+/* CONTACTO RESPONSIVE */
+
+@media (max-width: 800px) {
+  .contact-section {
+    padding: 35px 7% 22px;
+    gap: 45px;
+  }
+
+  .contact-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-intro h2 {
+    font-size: clamp(38px, 9vw, 60px);
+  }
+
+  .contact-description {
+    margin: 20px 0;
+  }
+
+  .contact-form {
+    gap: 8px;
+  }
+
+  .contact-footer {
+    align-items: flex-start;
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact-top > span {
+    max-width: 120px;
+    line-height: 1.7;
+  }
+
+  .contact-footer {
+    flex-direction: column;
+  }
+}

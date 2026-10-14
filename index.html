@@ -1,0 +1,862 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Gerardo Chu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HOME -->
+  <main class="home" id="home">
+
+    <video class="background-video" autoplay muted loop playsinline>
+      <source src="video/DJI_0064_1.mp4" type="video/mp4">
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <header class="header">
+      <a class="logo" href="#home" aria-label="Inicio"></a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="navigation" id="navigation">
+        <a href="#about">QUIÉN SOY</a>
+        <a href="#experience">TRAYECTORIA</a>
+       
+
+        <div class="dropdown">
+          <a href="#projects" class="projects-link">
+            PROYECTOS 
+          </a>
+
+          <div class="dropdown-menu">
+            <a href="#mercedes">Mercedes AMG</a>
+            <a href="#joyas">Diseño de joyería</a>
+            <a href="#elearning">E-learning · STA</a>
+            <a href="#branding">Branding</a>
+          </div>
+        </div>
+
+        <a href="#contact">CONTACTO</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <p class="hero-caption">
+        DISEÑO ·
+      </p>
+
+      <a href="#about" class="scroll-indicator">
+        EXPLORAR ↓
+      </a>
+    </div>
+
+  </main>
+
+
+  <!-- QUIÉN SOY: ANIMACIÓN GLITCH -->
+  <section class="about" id="about">
+
+    <div class="statement">
+
+      <p class="statement-line">
+        <span class="from-left">DISEÑO PARA</span>
+        <span class="glitch">RESOLVER</span>
+        <span class="from-right">PROBLEMAS,</span>
+      </p>
+
+      <p class="statement-line">
+        <span class="from-left">COMUNICAR</span>
+        <span class="glitch">IDEAS</span>
+        <span class="from-right">Y CREAR</span>
+      </p>
+
+      <p class="statement-line">
+        <span class="from-left">EXPERIENCIAS CON</span>
+        <span class="glitch">IMPACTO.</span>
+      </p>
+
+    </div>
+
+  </section>
+  <!-- FIN QUIÉN SOY -->
+
+
+  <!-- QUIÉN SOY: TEXTO Y CONTADORES -->
+  <section class="about-stats" id="about-stats">
+
+    <div class="stats-content">
+
+<header class="about-stats-header">
+  <p class="about-stats-kicker">QUIÉN SOY</p>
+</header>
+
+  <div class="stats-description">
+
+        <ul class="about-list">
+          <li>
+            Durante más de 15 años he diseñado productos,
+            construido marcas y desarrollado experiencias para
+            diferentes industrias.
+          </li>
+
+          <li>
+            Mi forma de trabajar siempre ha sido la misma:
+            escuchar, entender el problema y utilizar el diseño
+            para encontrar la mejor solución.
+          </li>
+
+          <li>
+            Hoy complemento ese proceso con inteligencia artificial
+            para ampliar las posibilidades creativas sin perder de
+            vista lo más importante: las personas para las que diseño.
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="stats-grid">
+
+        <div class="stat">
+          <span class="stat-number" data-target="15">0</span>
+          <span class="stat-label">
+            Años<br>de experiencia
+          </span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number" data-target="20">0</span>
+          <span class="stat-label">
+            Proyectos<br>desarrollados
+          </span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-number" data-target="3">0</span>
+          <span class="stat-label">
+            Países que marcaron<br>mi visión del diseño
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- FIN TEXTO Y CONTADORES -->
+
+
+  <!-- TRAYECTORIA -->
+<section class="experience-section" id="experience">
+
+  <div class="experience-sticky">
+
+    <header class="experience-header">
+      <p class="experience-kicker"> TRAYECTORIA</p>
+      <h2>UN RECORRIDO<br>POR EL <span>DISEÑO.</span></h2>
+      <p class="experience-hint">SCROLL PARA EXPLORAR <span>↓</span></p>
+    </header>
+
+    <div class="experience-progress">
+      <div class="experience-progress-fill"></div>
+    </div>
+
+    <div class="experience-counter">
+      <span class="experience-current">01</span>
+      <span class="experience-counter-line"></span>
+      <span>07</span>
+    </div>
+
+    <div class="experience-timeline">
+
+      <article class="experience-item is-current"
+        data-year="2007" data-type="FORMACIÓN">
+        <div class="experience-year">2007</div>
+        <div class="experience-card">
+          <p class="experience-type">FORMACIÓN <span>01 / 07</span></p>
+          <h3>El comienzo<br>de una visión.</h3>
+          <p class="experience-role">Bachiller en Diseño Gráfico</p>
+          <p class="experience-place">Toulouse Lautrec · Lima, Perú</p>
+        </div>
+      </article>
+
+      <article class="experience-item"
+        data-year="2008" data-type="FORMACIÓN">
+        <div class="experience-year">2008</div>
+        <div class="experience-card">
+          <p class="experience-type">FORMACIÓN <span>02 / 07</span></p>
+          <h3>Diseño que<br>conecta ideas.</h3>
+          <p class="experience-role">Máster en Diseño Editorial, Impreso y Digital</p>
+          <p class="experience-place">IED Instituto Europeo di Design · Barcelona, España</p>
+        </div>
+      </article>
+
+      <article class="experience-item"
+        data-year="2008 — ACTUALIDAD" data-type="INDEPENDIENTE">
+        <div class="experience-year">2008<span>—</span></div>
+        <div class="experience-card">
+          <p class="experience-type">INDEPENDIENTE <span>03 / 07</span></p>
+          <h3>Ideas que<br>se convierten en marcas.</h3>
+          <p class="experience-role">Diseñador Gráfico Freelance</p>
+          <p class="experience-place">Branding, diseño editorial, publicidad y comunicación visual.</p>
+        </div>
+      </article>
+
+      <article class="experience-item"
+        data-year="2009 — 2023" data-type="EXPERIENCIA PROFESIONAL">
+        <div class="experience-year">2009<span>—23</span></div>
+        <div class="experience-card">
+          <p class="experience-type">EXPERIENCIA PROFESIONAL <span>04 / 07</span></p>
+          <h3>Diseño.<br>Tecnología. Producto.</h3>
+          <p class="experience-role">Jefe del Área de Diseño / Especialista en Diseño 3D</p>
+          <p class="experience-place">ARIN S.A. · Lima, Perú</p>
+          <p class="experience-detail">
+            Desarrollo de colecciones de joyería, modelado 3D,
+            prototipado, procesos de fabricación y dirección de proyectos.
+          </p>
+        </div>
+      </article>
+
+      <article class="experience-item"
+        data-year="2016" data-type="FORMACIÓN">
+        <div class="experience-year">2016</div>
+        <div class="experience-card">
+          <p class="experience-type">FORMACIÓN <span>05 / 07</span></p>
+          <h3>El valor<br>de trabajar en equipo.</h3>
+          <p class="experience-role">Diplomado en Equipos de Alto Rendimiento</p>
+          <p class="experience-place">Universidad Peruana de Ciencias Aplicadas (UPC) · Lima, Perú</p>
+        </div>
+      </article>
+
+      <article class="experience-item"
+        data-year="2024 — 2025" data-type="EXPERIENCIA PROFESIONAL">
+        <div class="experience-year">2024<span>—25</span></div>
+        <div class="experience-card">
+          <p class="experience-type">EXPERIENCIA PROFESIONAL <span>06 / 07</span></p>
+          <h3>Diseño para<br>aprender mejor.</h3>
+          <p class="experience-role">Online Course Developer | Marketing & Communications</p>
+          <p class="experience-place">Saskatchewan Trucking Association · Regina, Canadá</p>
+          <p class="experience-detail">
+            Experiencias de aprendizaje virtual, contenido multimedia,
+            animación y comunicación para programas de formación.
+          </p>
+        </div>
+      </article>
+
+      <article class="experience-item"
+        data-year="2025" data-type="FORMACIÓN">
+        <div class="experience-year">2025</div>
+        <div class="experience-card">
+          <p class="experience-type">FORMACIÓN <span>07 / 07</span></p>
+          <h3>Diseño en<br>nuevas dimensiones.</h3>
+          <p class="experience-role">Diploma en Diseño Interactivo y Tecnología</p>
+          <p class="experience-place">Saskatchewan Polytechnic · Regina, Canadá</p>
+          <p class="experience-detail">
+            Una nueva etapa que integra diseño, tecnología y experiencias digitales.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+
+  </div>
+
+</section>
+<!-- FIN TRAYECTORIA -->
+
+
+  
+
+
+
+  <!-- PROYECTO MERCEDES AMG -->
+  <section class="mercedes-section" id="mercedes">
+
+    <div class="mercedes-intro">
+
+      <p class="mercedes-description">
+        <span class="mercedes-line">
+          Comercial conceptual creado mediante dirección de arte,
+        </span>
+
+        <span class="mercedes-line">
+          inteligencia artificial y producción audiovisual para explorar
+        </span>
+
+        <span class="mercedes-line">
+          la narrativa visual de una marca de lujo.
+        </span>
+      </p>
+
+    </div>
+
+    <video
+      class="mercedes-video"
+      muted
+      playsinline
+      preload="metadata"
+    >
+      <source src="video/mb.mp4" type="video/mp4">
+      Tu navegador no admite la reproducción de video.
+    </video>
+
+  </section>
+  <!-- FIN PROYECTO MERCEDES AMG -->
+
+
+  
+
+<!-- DISEÑO DE JOYERÍA -->
+<section class="jewelry-section" id="joyas">
+
+  <div class="jewelry-stage">
+
+    <!-- ESCENA 1: PRESENTACIÓN -->
+    <div class="jewelry-scene jewelry-intro">
+      <div class="jewelry-heading">
+        <h2 class="jewelry-title">DISEÑO DE JOYERÍA</h2>
+        <p class="jewelry-subtitle">Diseño y Desarrollo de Producto</p>
+      </div>
+
+      <p class="jewelry-description">
+        Más de una década desarrollando colecciones de joyería para
+        producción comercial. Mi experiencia comprende diseño conceptual,
+        modelado 3D, desarrollo técnico y preparación de piezas para
+        producción.
+      </p>
+    </div>
+
+    <!-- ESCENA 2: BOCETO -->
+    <div class="jewelry-scene jewelry-image-scene">
+      <div class="jewelry-heading">
+        <h2 class="jewelry-title">DISEÑO DE JOYERÍA</h2>
+        <p class="jewelry-subtitle">Diseño y Desarrollo de Producto</p>
+      </div>
+      <img src="imagenes/anillo1a.png"
+           alt="Boceto técnico de diseño de joyería">
+    </div>
+
+    <!-- ESCENA 3: MODELADO 3D -->
+    <div class="jewelry-scene jewelry-image-scene">
+      <div class="jewelry-heading">
+        <h2 class="jewelry-title">DISEÑO DE JOYERÍA</h2>
+        <p class="jewelry-subtitle">Diseño y Desarrollo de Producto</p>
+      </div>
+      <img src="imagenes/anillo1b.png"
+           alt="Modelado 3D de una joya">
+    </div>
+
+    <!-- ESCENA 4: RENDER FINAL -->
+    <div class="jewelry-scene jewelry-image-scene">
+      <div class="jewelry-heading">
+        <h2 class="jewelry-title">DISEÑO DE JOYERÍA</h2>
+        <p class="jewelry-subtitle">Diseño y Desarrollo de Producto</p>
+      </div>
+      <img src="imagenes/anillo1c.png"
+           alt="Render final de anillo con zafiro azul">
+    </div>
+
+    <!-- ESCENA 5: VIDEO -->
+    <div class="jewelry-scene jewelry-image-scene jewelry-video-scene">
+      <div class="jewelry-heading">
+        <h2 class="jewelry-title">DISEÑO DE JOYERÍA</h2>
+        <p class="jewelry-subtitle">Diseño y Desarrollo de Producto</p>
+      </div>
+
+      <video muted playsinline loop preload="metadata">
+        <source src="video/jewelry.mp4" type="video/mp4">
+      </video>
+    </div>
+
+<!-- INDICADOR DE NAVEGACIÓN -->
+<div class="jewelry-navigation">
+  <p class="jewelry-scroll-hint">SCROLL PARA EXPLORAR</p>
+
+  <div
+    class="jewelry-progress-track"
+    role="progressbar"
+    aria-label="Progreso de diseño de joyería"
+    aria-valuemin="1"
+    aria-valuemax="5"
+    aria-valuenow="1"
+  >
+    <div class="jewelry-progress-fill"></div>
+  </div>
+
+  <p class="jewelry-counter">
+    <span class="jewelry-current">01</span>
+    <span class="jewelry-counter-divider">/</span>
+    <span class="jewelry-total">05</span>
+  </p>
+</div>
+
+  </div>
+</section>
+<!-- FIN DISEÑO DE JOYERÍA -->
+
+
+
+
+
+<!-- E-LEARNING · STA -->
+<section class="sta-section" id="elearning">
+
+  <div class="sta-sticky">
+
+    <header class="sta-header">
+      <p class="sta-kicker">· E-LEARNING</p>
+      <h2>LEARNING<br>IN <span>MOTION.</span></h2>
+      <p class="sta-description">
+        Diseño instruccional · Experiencias digitales · Formación profesional
+      </p>
+    </header>
+
+    <div class="sta-counter">
+      <span class="sta-current">01</span>
+      <span class="sta-counter-line"></span>
+      <span>05</span>
+    </div>
+
+    <div class="sta-scenes">
+
+      <!-- ESCENA 1 -->
+      <article class="sta-scene is-current">
+        <img
+          src="imagenes/sta1.png"
+          alt="Curso de Diversity, Equity and Inclusion Training para STA"
+          loading="eager"
+        >
+        <div class="sta-scene-label">
+          <span>01</span>
+          <span>DIVERSITY, EQUITY & INCLUSION</span>
+        </div>
+      </article>
+
+      <!-- ESCENA 2 -->
+      <article class="sta-scene">
+        <img
+          src="imagenes/sta2.png"
+          alt="Plataforma de formación Fundamentals of Investigation para STA"
+          loading="lazy"
+        >
+        <div class="sta-scene-label">
+          <span>02</span>
+          <span>FUNDAMENTALS OF INVESTIGATION</span>
+        </div>
+      </article>
+
+      <!-- ESCENA 3 -->
+      <article class="sta-scene">
+        <img
+          src="imagenes/sta4.png"
+          alt="Plataforma de formación COR Auditor Training para STA"
+          loading="lazy"
+        >
+        <div class="sta-scene-label">
+          <span>03</span>
+          <span>COR AUDITOR TRAINING</span>
+        </div>
+      </article>
+
+<!-- ESCENA 4 -->
+<article class="sta-scene">
+  <img
+    src="imagenes/sta5.png"
+    alt="Curso Leadership in Transportation de STA"
+    loading="lazy"
+  >
+  <div class="sta-scene-label">
+    <span>04</span>
+    <span>LEADERSHIP IN TRANSPORTATION</span>
+  </div>
+</article>
+
+<!-- ESCENA 5 -->
+<article class="sta-scene">
+  <img
+    src="imagenes/sta6.png"
+    alt="Curso Fundamentals of Auditing de STA"
+    loading="lazy"
+  >
+  <div class="sta-scene-label">
+    <span>05</span>
+    <span>FUNDAMENTALS OF AUDITING</span>
+  </div>
+</article>
+
+    </div>
+
+    <div class="sta-progress">
+      <div class="sta-progress-fill"></div>
+    </div>
+
+    <div class="sta-footer">
+      <span>SASKATCHEWAN TRUCKING ASSOCIATION</span>
+      <span>SCROLL PARA EXPLORAR ↓</span>
+    </div>
+
+  </div>
+
+</section>
+<!-- FIN E-LEARNING · STA -->
+
+
+
+ 
+<!-- BRANDING: BLOOM -->
+<section class="branding-section" id="branding">
+
+  <div class="branding-stage">
+
+    <!-- ESCENA 1: IDENTIDAD -->
+    <div class="branding-scene bloom-scene bloom-intro is-active">
+      <div class="bloom-intro-content">
+        <p class="bloom-kicker">BRANDING · CAMPAÑA CONCEPTUAL</p>
+
+        <img
+          class="bloom-logo"
+          src="imagenes/bloom logo.png"
+          alt="BLOOM Good Beer"
+        >
+
+        <p class="bloom-tagline">BREWED FOR BRIGHTER DAYS</p>
+
+        <p class="bloom-description">
+          Desarrollo de identidad visual y campaña publicitaria
+          para una marca conceptual de cerveza.
+        </p>
+      </div>
+
+      <span class="branding-index">01</span>
+      <span class="branding-scroll-hint">SCROLL PARA EXPLORAR ↓</span>
+    </div>
+
+    <!-- ESCENA 2: DIRECCIÓN DE ARTE -->
+    <div class="branding-scene bloom-scene bloom-editorial-scene">
+      <div class="bloom-editorial">
+        <div class="bloom-editorial-copy">
+          
+        </div>
+
+        <img
+          class="bloom-ad-image"
+          src="imagenes/bloom ad2.png"
+          alt="Campaña publicitaria BLOOM con cerveza"
+        >
+      </div>
+
+      <span class="branding-index">02</span>
+      <span class="branding-scroll-hint">CONTINUAR ↓</span>
+    </div>
+
+    <!-- ESCENA 3: VIDEO DE CAMPAÑA -->
+    <div class="branding-scene bloom-scene bloom-video-scene">
+      <div class="bloom-video-copy">
+        <p class="bloom-kicker">BLOOM · MOTION CAMPAIGN</p>
+        <h2>Good<br> beer.<br>Good <br>moments.</h2>
+        <p class="bloom-video-description">
+          Una identidad diseñada para cobrar vida.
+        </p>
+      </div>
+
+      <div class="bloom-video-frame">
+        <video
+          class="bloom-video"
+          muted
+          playsinline
+          preload="metadata"
+          loop
+        >
+          <source src="video/beer.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <span class="branding-index">03</span>
+      <span class="branding-scroll-hint">CONTINUAR ↓</span>
+    </div>
+
+    <!-- ESCENA 4: CIERRE VISUAL -->
+    <div class="branding-scene bloom-scene bloom-outro">
+      <img
+        class="bloom-outro-image"
+        src="imagenes/bloom amigos.png"
+        alt="Amigos compartiendo una cerveza BLOOM"
+      >
+
+      <div class="bloom-outro-copy">
+        <img src="imagenes/bloom logo.png" alt="BLOOM">
+        <p>GOOD PEOPLE · GOOD MOMENTS · GOOD BEER</p>
+      </div>
+
+      <span class="branding-index">04</span>
+      <span class="branding-scroll-hint">FIN DEL PROYECTO ↑</span>
+    </div>
+
+  </div>
+</section>
+<!-- FIN BRANDING: BLOOM -->
+
+
+<!-- RITUAL RESERVE — BRAND EXPERIENCE -->
+<section class="ritual-section" id="ritual-reserve">
+  <div class="ritual-stage">
+
+    <!-- ESCENA 01: THE ORIGIN -->
+    <article class="ritual-scene ritual-intro is-active">
+      <img
+        class="ritual-origin-image"
+        src="imagenes/cafe grano.png"
+        alt="Textura y origen del café Ritual Reserve"
+      >
+
+      <div class="ritual-origin-shade"></div>
+
+      <div class="ritual-origin-top">
+        <span>R / R</span>
+        <span>COFFEE CULTURE · VOL. 01</span>
+      </div>
+
+      <div class="ritual-origin-heading">
+        <p class="ritual-kicker">BEYOND THE ORDINARY</p>
+        <h2>RITUAL<br><span>RESERVE</span></h2>
+      </div>
+
+      <div class="ritual-origin-bottom">
+        <img src="imagenes/cafe logo.png" alt="Ritual Reserve">
+        <p>El origen de una pausa<br>extraordinaria.</p>
+        <span>01 — 04</span>
+      </div>
+    </article>
+
+    <!-- ESCENA 02: CRAFTED WITH CARE -->
+    <article class="ritual-scene ritual-art">
+      <div class="ritual-art-index">
+        <span>02</span>
+        <span>THE BRAND STUDY</span>
+      </div>
+
+      <div class="ritual-art-heading">
+        <p class="ritual-kicker">ORIGIN / CRAFT / CHARACTER</p>
+        <h2>Not just<br>another<br><em>coffee.</em></h2>
+      </div>
+
+      <div class="ritual-art-image-wrap">
+        <img
+          class="ritual-bean-image"
+          src="imagenes/cafe polvo.png"
+          alt="Aplicación visual de la identidad Ritual Reserve"
+        >
+      
+      </div>
+
+      <div class="ritual-art-footer">
+        <p>Una identidad creada alrededor del origen, el carácter y el placer de detenerse.</p>
+        <span>CRAFTED FOR THE CONNOISSEUR</span>
+      </div>
+    </article>
+
+    <!-- ESCENA 03: THE RITUAL -->
+    <article class="ritual-scene ritual-motion">
+      <div class="ritual-motion-top">
+        <img src="imagenes/cafe logo.png" alt="Ritual Reserve">
+        <span>FILM STUDY / 001</span>
+      </div>
+
+      <div class="ritual-motion-title">
+        <p class="ritual-kicker">SLOW DOWN. TUNE IN.</p>
+        <h2>The art<br>of <em>pausing.</em></h2>
+      </div>
+
+      <div class="ritual-video-frame">
+        <video
+          class="ritual-video"
+          muted
+          playsinline
+          preload="metadata"
+        >
+          <source src="video/coffee.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <span class="ritual-motion-side">RITUAL RESERVE — COFFEE IN MOTION</span>
+
+      <div class="ritual-motion-bottom">
+        <span>AROMA</span>
+        <span>TEXTURE</span>
+        <span>TIME</span>
+      </div>
+    </article>
+
+    <!-- ESCENA 04: TAKE YOUR TIME -->
+    <article class="ritual-scene ritual-outro">
+      <div class="ritual-outro-top">
+        <span>RITUAL RESERVE</span>
+        <span>THE LAST SIP</span>
+      </div>
+
+      <div class="ritual-outro-image-wrap">
+        <img
+          class="ritual-cup-image"
+          src="imagenes/cafe taza.png"
+          alt="La experiencia del café Ritual Reserve"
+        >
+      </div>
+
+      <div class="ritual-outro-message">
+        <span class="ritual-outro-number">04 / 04</span>
+        <h2>Make time<br>for <em>yourself.</em></h2>
+        <p>No es solo café.<br>Es el momento que te pertenece.</p>
+        <img src="imagenes/cafe logo.png" alt="Ritual Reserve">
+      </div>
+
+      <span class="ritual-outro-signature">TAKE YOUR TIME.</span>
+    </article>
+
+<!-- SCENE 05: BRAND SIGNATURE -->
+<article class="ritual-scene ritual-signature">
+  <div class="ritual-signature-content">
+    <p class="ritual-signature-kicker">
+      THE RITUAL CONTINUES
+    </p>
+
+    <img
+      class="ritual-signature-logo"
+      src="imagenes/cafe logo.png"
+      alt="Ritual Reserve"
+    >
+
+    <p class="ritual-signature-caption">
+      Take your time.
+    </p>
+  </div>
+
+  <div class="ritual-signature-footer">
+    <span>RITUAL RESERVE</span>
+    <span>END OF EXPERIENCE · 05 / 05</span>
+  </div>
+</article>
+<!-- END SCENE 05 -->
+
+  </div>
+</section>
+<!-- END RITUAL RESERVE -->
+
+  
+
+  <!-- HERRAMIENTAS -->
+  <section class="placeholder" id="tools">
+    <p>04 / HERRAMIENTAS</p>
+    <h2>Herramientas creativas</h2>
+  </section>
+
+
+  
+<!-- CONTACTO -->
+<section class="contact-section" id="contact">
+
+  <div class="contact-top">
+    <p class="contact-kicker">05 / CONTACTO</p>
+  
+  </div>
+
+  <div class="contact-main">
+
+    <div class="contact-intro">
+      <p class="contact-eyebrow">¿TIENES UN PROYECTO EN MENTE?</p>
+
+      <h2>
+        Hablemos de<br>
+        <span>lo que podemos crear.</span>
+      </h2>
+
+      <p class="contact-description">
+        Diseño, ideas y experiencias que conectan.
+        Cuéntame qué tienes en mente y exploremos
+        cómo llevarlo a la realidad.
+      </p>
+
+      <a class="contact-email" href="kayaa13@gmail.com">
+        kayaa13@gmail.com <span>↗</span>
+      </a>
+    </div>
+
+    <form class="contact-form" id="contact-form">
+
+      <label for="contact-name">NOMBRE</label>
+      <input
+        type="text"
+        id="contact-name"
+        name="name"
+        placeholder="¿Cómo te llamas?"
+        required
+      >
+
+      <label for="contact-email">CORREO ELECTRÓNICO</label>
+      <input
+        type="email"
+        id="contact-email"
+        name="email"
+        placeholder="tu@correo.com"
+        required
+      >
+
+      <label for="contact-project">TIPO DE PROYECTO</label>
+      <select id="contact-project" name="project" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="Branding e identidad visual">Branding e identidad visual</option>
+        <option value="Diseño gráfico y comunicación">Diseño gráfico y comunicación</option>
+        <option value="Diseño de producto y joyería">Diseño de producto y joyería</option>
+        <option value="Diseño digital y e-learning">Diseño digital y e-learning</option>
+        <option value="Dirección de arte y audiovisual">Dirección de arte y audiovisual</option>
+        <option value="Otro proyecto">Otro proyecto</option>
+      </select>
+
+      <label for="contact-message">CUÉNTAME SOBRE TU IDEA</label>
+      <textarea
+        id="contact-message"
+        name="message"
+        rows="3"
+        placeholder="¿Qué te gustaría crear?"
+        required
+      ></textarea>
+
+      <button type="submit" class="contact-submit">
+        PREPARAR MENSAJE <span>↗</span>
+      </button>
+
+      <p class="contact-form-note">
+        Se abrirá tu aplicación de correo para enviar el mensaje.
+      </p>
+
+    </form>
+
+  </div>
+
+  <footer class="contact-footer">
+    <span>GERARDO CHU · DISEÑO Y DIRECCIÓN CREATIVA</span>
+    <a href="#home">VOLVER AL INICIO ↑</a>
+  </footer>
+
+</section>
+<!-- FIN CONTACTO -->
+
+
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
