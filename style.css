@@ -3001,3 +3001,18 @@ body {
   }
 }
 
+
+/* ALINEAR PROYECTOS EN EL MENÚ MÓVIL */
+@media (max-width: 900px) {
+  .navigation .dropdown {
+    width: auto;
+    align-self: center;
+    text-align: center;
+  }
+
+  .navigation .projects-link {
+    display: block;
+    text-align: center;
+  }
+}
+
