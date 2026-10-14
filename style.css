@@ -1186,7 +1186,7 @@ body {
 }
 
 /* Tablets y móviles */
-@media (max-width: 700px) {
+@media (max-width: 700px) and (orientation: portrait) {
   .experience-section {
     height: auto;
   }
@@ -1199,9 +1199,9 @@ body {
     overflow: visible;
   }
 
-  .experience-sticky::before {
-    position: fixed;
-  }
+ .experience-sticky::before {
+  position: absolute;
+}
 
   .experience-header,
   .experience-counter,

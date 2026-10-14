@@ -470,7 +470,11 @@ function updateJewelryScenes() {
     ticking = false;
 
     // En móvil mostramos todos los acontecimientos para facilitar la lectura.
-    if (window.matchMedia('(max-width: 700px)').matches) {
+    if (
+  window.matchMedia(
+    '(max-width: 700px) and (orientation: portrait)'
+  ).matches
+) {
       progressFill.style.width = '100%';
       currentCounter.textContent = String(items.length).padStart(2, '0');
       return;
