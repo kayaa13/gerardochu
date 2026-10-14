@@ -1186,63 +1186,47 @@ body {
 }
 
 /* Tablets y móviles */
+
+/* TRAYECTORIA — ESCENAS CINEMATOGRÁFICAS EN VERTICAL */
 @media (max-width: 700px) and (orientation: portrait) {
   .experience-section {
-    height: auto;
+    height: 700vh;
   }
 
   .experience-sticky {
-    position: relative;
-    height: auto;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
     min-height: 0;
     padding: 75px 7% 35px;
-    overflow: visible;
-  }
-
- .experience-sticky::before {
-  position: absolute;
-}
-
-  .experience-header,
-  .experience-counter,
-  .experience-progress,
-  .experience-bottom {
-    position: static;
-  }
-
-  .experience-header {
-    margin-bottom: 55px;
+    overflow: hidden;
   }
 
   .experience-header h2 {
-    font-size: clamp(34px, 10vw, 52px);
-  }
-
-  .experience-counter {
-    align-self: flex-end;
-    margin-bottom: 20px;
+    font-size: clamp(30px, 8vw, 42px);
   }
 
   .experience-timeline {
-    height: auto;
-    margin-top: 0;
+    height: 45%;
+    margin-top: 8vh;
   }
 
   .experience-item,
   .experience-item.is-current {
-    position: relative;
-    inset: auto;
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    padding: 30px 0 40px;
-    border-top: 1px solid #333;
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 24px;
+    padding: 0;
+    border-top: 0;
   }
 
   .experience-year {
     font-size: clamp(54px, 15vw, 88px);
-    margin-bottom: 28px;
+    margin-bottom: 0;
     white-space: normal;
   }
 
@@ -1252,19 +1236,10 @@ body {
   }
 
   .experience-card h3 {
-    font-size: clamp(28px, 8vw, 40px);
-  }
-
-  .experience-progress {
-    margin: 20px 0 35px;
-  }
-
-  .experience-bottom {
-    display: flex;
-    flex-wrap: wrap;
-    line-height: 1.8;
+    font-size: clamp(26px, 7vw, 36px);
   }
 }
+
 /* ENCABEZADO QUIÉN SOY — ESTILO TRAYECTORIA */
 .about-stats-header {
   position: static;
@@ -3026,56 +3001,3 @@ body {
   }
 }
 
-
-/* Pantalla para solicitar la rotación del celular */
-.rotate-screen {
-  display: none;
-}
-
-@media screen and (max-width: 700px) and (orientation: portrait) {
-  .rotate-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 2147483647;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    height: 100%;
-    height: 100dvh;
-    box-sizing: border-box;
-    padding: 24px;
-
-    overflow: hidden;
-    background: #000;
-    color: #fff;
-    text-align: center;
-  }
-
-  .rotate-content {
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-  }
-
-  .rotate-icon {
-    display: block;
-    width: clamp(150px, 45vw, 210px);
-    height: auto;
-    margin: 0 auto 42px;
-    color: #fff;
-  }
-
-  .rotate-title {
-    margin: 0;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(16px, 4.5vw, 22px);
-    font-weight: 400;
-    letter-spacing: 0.14em;
-    line-height: 1.5;
-    white-space: nowrap;
-  }
-}

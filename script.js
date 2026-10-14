@@ -469,16 +469,7 @@ function updateJewelryScenes() {
   function updateTimeline() {
     ticking = false;
 
-    // En móvil mostramos todos los acontecimientos para facilitar la lectura.
-    if (
-  window.matchMedia(
-    '(max-width: 700px) and (orientation: portrait)'
-  ).matches
-) {
-      progressFill.style.width = '100%';
-      currentCounter.textContent = String(items.length).padStart(2, '0');
-      return;
-    }
+   
 
     const rect = section.getBoundingClientRect();
     const scrollableDistance = section.offsetHeight - window.innerHeight;
