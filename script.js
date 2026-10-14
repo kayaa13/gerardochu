@@ -663,6 +663,7 @@ if (bloomSection) {
 }
 
 
+
 /* =========================================
    RITUAL RESERVE — SCROLL EXPERIENCE
 ========================================= */
@@ -682,15 +683,22 @@ if (ritualSection) {
   function updateRitual() {
     ritualFrame = null;
 
-    const rect = ritualSection.getBoundingClientRect();
+    const sectionTop =
+      window.scrollY +
+      ritualSection.getBoundingClientRect().top;
+
     const scrollDistance =
-      ritualSection.offsetHeight - window.innerHeight;
+      ritualSection.offsetHeight -
+      document.documentElement.clientHeight;
 
     if (scrollDistance <= 0 || ritualScenes.length === 0) return;
 
     const progress = Math.max(
       0,
-      Math.min(1, -rect.top / scrollDistance)
+      Math.min(
+        1,
+        (window.scrollY - sectionTop) / scrollDistance
+      )
     );
 
     const index = Math.min(
@@ -706,19 +714,9 @@ if (ritualSection) {
       scene.classList.toggle('is-active', i === ritualIndex);
     });
 
-    // El video solo se reproduce en la tercera escena
     if (ritualVideo) {
       if (ritualIndex === 2) {
-        if (ritualVideo.ended) {
-          ritualVideo.currentTime = 0;
-        }
-
-        ritualVideo.play().catch((error) => {
-          console.warn(
-            'No se pudo reproducir el video Ritual Reserve:',
-            error
-          );
-        });
+        ritualVideo.play().catch(() => {});
       } else {
         ritualVideo.pause();
         ritualVideo.currentTime = 0;
@@ -738,8 +736,11 @@ if (ritualSection) {
 
   window.addEventListener('resize', requestRitualUpdate);
 
+  window.addEventListener('orientationchange', requestRitualUpdate);
+
   updateRitual();
 }
+
 
 
 /* CONTACTO — PREPARAR CORREO */
