@@ -41,18 +41,84 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+ 
   /* =========================
-     SUBMENÚ DE PROYECTOS
+     MENÚ MÓVIL Y SUBMENÚ PROYECTOS
   ========================= */
 
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navigation = document.querySelector('.navigation');
   const dropdown = document.querySelector('.dropdown');
   const projectsLink = document.querySelector('.projects-link');
 
+  // Abrir y cerrar el menú principal
+  if (menuToggle && navigation) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('is-open');
+
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Cerrar menú' : 'Abrir menú'
+      );
+    });
+
+    // Cerrar el menú al seleccionar un enlace,
+    // excepto PROYECTOS, que controla su propio submenú.
+    navigation.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth > 900) return;
+
+        if (link.classList.contains('projects-link')) return;
+
+        navigation.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menú');
+
+        // Reiniciar el submenú para la próxima apertura.
+        if (dropdown) {
+          dropdown.classList.remove('open');
+        }
+
+        if (projectsLink) {
+          projectsLink.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Cerrar menú y submenú con Escape.
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+
+      navigation.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menú');
+
+      if (dropdown) {
+        dropdown.classList.remove('open');
+      }
+
+      if (projectsLink) {
+        projectsLink.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Control del submenú PROYECTOS en móvil
   if (dropdown && projectsLink) {
+    projectsLink.setAttribute('aria-haspopup', 'true');
+    projectsLink.setAttribute('aria-expanded', 'false');
+
     projectsLink.addEventListener('click', (event) => {
       if (window.innerWidth <= 900) {
         event.preventDefault();
-        dropdown.classList.toggle('open');
+
+        const isOpen = dropdown.classList.toggle('open');
+
+        projectsLink.setAttribute(
+          'aria-expanded',
+          String(isOpen)
+        );
       }
     });
   }
