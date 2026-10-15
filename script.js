@@ -46,11 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
      MENÚ MÓVIL Y SUBMENÚ PROYECTOS
   ========================= */
 
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navigation = document.querySelector('.navigation');
-  const dropdown = document.querySelector('.dropdown');
-  const projectsLink = document.querySelector('.projects-link');
-
+ 
   // Abrir y cerrar el menú principal
   if (menuToggle && navigation) {
     menuToggle.addEventListener('click', () => {
