@@ -95,17 +95,7 @@ body {
 
 
 
-.navigation > a::after,
-.navigation > .dropdown::after {
-  content: "|";
-  display: inline-block;
-  margin-left: 13px;
-  color: white;
-  font-size: 9px;
-  line-height: 1;
-  font-weight: 400;
-  opacity: 0.7;
-}
+
 
 .navigation > a:last-child::after {
   content: none;

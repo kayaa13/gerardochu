@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* =========================
+    /* =========================
      MENÚ MÓVIL
   ========================= */
 
@@ -19,9 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     });
 
-    // Cerrar el menú al seleccionar un enlace
     navigation.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
+        // PROYECTOS abre su submenú sin cerrar el menú móvil.
+        if (link.classList.contains('projects-link')) return;
+
         if (window.innerWidth <= 900) {
           navigation.classList.remove('is-open');
           menuToggle.setAttribute('aria-expanded', 'false');
@@ -30,91 +32,31 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Cerrar el menú con Escape
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         navigation.classList.remove('is-open');
         menuToggle.setAttribute('aria-expanded', 'false');
         menuToggle.setAttribute('aria-label', 'Abrir menú');
+
+        const dropdown = navigation.querySelector('.dropdown');
+        if (dropdown) dropdown.classList.remove('open');
       }
     });
   }
 
 
- 
   /* =========================
-     MENÚ MÓVIL Y SUBMENÚ PROYECTOS
+     SUBMENÚ DE PROYECTOS
   ========================= */
 
- 
-  // Abrir y cerrar el menú principal
-  if (menuToggle && navigation) {
-    menuToggle.addEventListener('click', () => {
-      const isOpen = navigation.classList.toggle('is-open');
+  const dropdown = document.querySelector('.dropdown');
+  const projectsLink = document.querySelector('.projects-link');
 
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
-      menuToggle.setAttribute(
-        'aria-label',
-        isOpen ? 'Cerrar menú' : 'Abrir menú'
-      );
-    });
-
-    // Cerrar el menú al seleccionar un enlace,
-    // excepto PROYECTOS, que controla su propio submenú.
-    navigation.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth > 900) return;
-
-        if (link.classList.contains('projects-link')) return;
-
-        navigation.classList.remove('is-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Abrir menú');
-
-        // Reiniciar el submenú para la próxima apertura.
-        if (dropdown) {
-          dropdown.classList.remove('open');
-        }
-
-        if (projectsLink) {
-          projectsLink.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-
-    // Cerrar menú y submenú con Escape.
-    document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape') return;
-
-      navigation.classList.remove('is-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', 'Abrir menú');
-
-      if (dropdown) {
-        dropdown.classList.remove('open');
-      }
-
-      if (projectsLink) {
-        projectsLink.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  // Control del submenú PROYECTOS en móvil
   if (dropdown && projectsLink) {
-    projectsLink.setAttribute('aria-haspopup', 'true');
-    projectsLink.setAttribute('aria-expanded', 'false');
-
     projectsLink.addEventListener('click', (event) => {
       if (window.innerWidth <= 900) {
         event.preventDefault();
-
-        const isOpen = dropdown.classList.toggle('open');
-
-        projectsLink.setAttribute(
-          'aria-expanded',
-          String(isOpen)
-        );
+        dropdown.classList.toggle('open');
       }
     });
   }
@@ -725,83 +667,6 @@ if (bloomSection) {
 }
 
 
-
-/* =========================================
-   RITUAL RESERVE — SCROLL EXPERIENCE
-========================================= */
-
-const ritualSection = document.querySelector('#ritual-reserve');
-
-if (ritualSection) {
-  const ritualScenes = [
-    ...ritualSection.querySelectorAll('.ritual-scene')
-  ];
-
-  const ritualVideo = ritualSection.querySelector('.ritual-video');
-
-  let ritualIndex = -1;
-  let ritualFrame = null;
-
-  function updateRitual() {
-    ritualFrame = null;
-
-    const sectionTop =
-      window.scrollY +
-      ritualSection.getBoundingClientRect().top;
-
-    const scrollDistance =
-      ritualSection.offsetHeight -
-      document.documentElement.clientHeight;
-
-    if (scrollDistance <= 0 || ritualScenes.length === 0) return;
-
-    const progress = Math.max(
-      0,
-      Math.min(
-        1,
-        (window.scrollY - sectionTop) / scrollDistance
-      )
-    );
-
-    const index = Math.min(
-      ritualScenes.length - 1,
-      Math.floor(progress * ritualScenes.length)
-    );
-
-    if (index === ritualIndex) return;
-
-    ritualIndex = index;
-
-    ritualScenes.forEach((scene, i) => {
-      scene.classList.toggle('is-active', i === ritualIndex);
-    });
-
-    if (ritualVideo) {
-      if (ritualIndex === 2) {
-        ritualVideo.play().catch(() => {});
-      } else {
-        ritualVideo.pause();
-        ritualVideo.currentTime = 0;
-      }
-    }
-  }
-
-  function requestRitualUpdate() {
-    if (ritualFrame !== null) return;
-
-    ritualFrame = window.requestAnimationFrame(updateRitual);
-  }
-
-  window.addEventListener('scroll', requestRitualUpdate, {
-    passive: true
-  });
-
-  window.addEventListener('resize', requestRitualUpdate);
-
-  window.addEventListener('orientationchange', requestRitualUpdate);
-
-  updateRitual();
-}
 
 
 
