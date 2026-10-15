@@ -666,7 +666,79 @@ if (bloomSection) {
   updateBloom();
 }
 
+/* =========================
+   RITUAL RESERVE
+   ESCENAS CONTROLADAS POR SCROLL
+========================= */
 
+const ritualSection = document.querySelector('#ritual-reserve');
+
+if (ritualSection) {
+  const ritualScenes = [
+    ...ritualSection.querySelectorAll('.ritual-scene')
+  ];
+
+  const ritualVideo = ritualSection.querySelector('.ritual-video');
+
+  let ritualIndex = -1;
+  let ritualFrame = null;
+
+  function updateRitual() {
+    ritualFrame = null;
+
+    const rect = ritualSection.getBoundingClientRect();
+    const scrollDistance =
+      ritualSection.offsetHeight - window.innerHeight;
+
+    if (scrollDistance <= 0 || ritualScenes.length === 0) return;
+
+    const progress = Math.max(
+      0,
+      Math.min(0.999999, -rect.top / scrollDistance)
+    );
+
+    const index = Math.min(
+      ritualScenes.length - 1,
+      Math.floor(progress * ritualScenes.length)
+    );
+
+    if (index === ritualIndex) return;
+
+    ritualIndex = index;
+
+    ritualScenes.forEach((scene, i) => {
+      scene.classList.toggle('is-active', i === ritualIndex);
+    });
+
+    if (ritualVideo) {
+      if (ritualIndex === 2) {
+        ritualVideo.play().catch((error) => {
+          console.warn(
+            'No se pudo reproducir el video de Ritual Reserve:',
+            error
+          );
+        });
+      } else {
+        ritualVideo.pause();
+        ritualVideo.currentTime = 0;
+      }
+    }
+  }
+
+  function requestRitualUpdate() {
+    if (ritualFrame !== null) return;
+
+    ritualFrame = window.requestAnimationFrame(updateRitual);
+  }
+
+  window.addEventListener('scroll', requestRitualUpdate, {
+    passive: true
+  });
+
+  window.addEventListener('resize', requestRitualUpdate);
+
+  updateRitual();
+}
 
 
 

@@ -97,7 +97,7 @@ body {
 
 
 
-.navigation > a:last-child::after {
+.navigation a:last-child::after {
   content: none;
 }
 
@@ -117,12 +117,7 @@ body {
 .navigation > a:last-child::after {
   content: none;
 }
-
-
-/* SUBMENÚ */
-
-.dropdown {
-  position: relative;
+.dropdown{ position: relative;
 }
 
 .dropdown-menu {
@@ -3030,3 +3025,25 @@ body {
   }
 }
 
+/* BLOOM — imagen a pantalla completa en móvil vertical */
+@media (max-width: 600px) and (orientation: portrait) {
+  .branding-section .bloom-editorial,
+  .branding-section .bloom-editorial-scene {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .branding-section .bloom-ad-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+  }
+}
